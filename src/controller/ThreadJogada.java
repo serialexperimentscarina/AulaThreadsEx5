@@ -1,5 +1,8 @@
 package controller;
 
+import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -18,14 +21,8 @@ public class ThreadJogada extends Thread{
 	
 	@Override
 	public void run() {
-		lblTitulo.setText("Caça-Níquel");
-		btnJogar.setEnabled(false);
 		
-		Thread[] numeros = new Thread[3];		
-		for (int i = 0; i < 3; i++) {
-			numeros[i] = new ThreadNumero(nums[i]);
-			numeros[i].start();
-		}
+		Thread[] numeros = comecaJogo();
 		
 		for (Thread numero : numeros) {
 			try {
@@ -34,10 +31,31 @@ public class ThreadJogada extends Thread{
 				e.printStackTrace();
 			}
 		}
+		encerraJogo();
+	}
+	
+	private Thread[] comecaJogo() {
+		lblTitulo.setForeground(new Color(0, 0, 0));
+		lblTitulo.setText("Caça-Níquel");
+		btnJogar.setEnabled(false);
 		
-		lblTitulo.setText((nums[1].getText().equals(nums[2].getText()) && nums[2].getText().equals(nums[3].getText()) ? "GANHOU!" : "PERDEU!"));
+		Thread[] numeros = new Thread[3];		
+		for (int i = 0; i < 3; i++) {
+			numeros[i] = new ThreadNumero(nums[i]);
+			numeros[i].start();
+		}
+		return numeros;
+	}
+	
+	private void encerraJogo() {
+		if (nums[1].getText().equals(nums[2].getText()) && nums[2].getText().equals(nums[3].getText())) {
+			lblTitulo.setText("GANHOU!");
+			lblTitulo.setForeground(new Color(124, 252, 0));
+		} else {
+			lblTitulo.setText("PERDEU!");
+			lblTitulo.setForeground(new Color(200, 0, 0));
+		}
 		btnJogar.setEnabled(true);
-		
 	}
 
 }
