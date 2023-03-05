@@ -5,8 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.ThreadJogada;
+
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -76,15 +82,22 @@ public class Tela extends JFrame {
 		num3.setBounds(520, 150, 90, 75);
 		contentPane.add(num3);
 		
-		JLabel lblNewLabel = new JLabel("Caça-Níquel");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblNewLabel.setBounds(300, 50, 175, 40);
-		contentPane.add(lblNewLabel);
+		JLabel lblTitulo = new JLabel("Caça-Níquel");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblTitulo.setBounds(300, 50, 175, 40);
+		contentPane.add(lblTitulo);
 		
-		JButton btnNewButton = new JButton("Jogar");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnNewButton.setBounds(350, 310, 90, 25);
-		contentPane.add(btnNewButton);
+		JButton btnJogar = new JButton("Jogar");
+		btnJogar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnJogar.setBounds(350, 310, 90, 25);
+		btnJogar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Thread threadJogada = new ThreadJogada(btnJogar, num1, num2, num3, lblTitulo);
+				threadJogada.start();
+			}
+		});
+		contentPane.add(btnJogar);
 	}
 }
