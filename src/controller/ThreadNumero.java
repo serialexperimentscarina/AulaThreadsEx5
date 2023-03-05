@@ -14,10 +14,10 @@ public class ThreadNumero extends Thread{
 	
 	@Override
 	public void run() {
-		int numGiros = (int) (Math.random() * (MAX_GIROS - 1) + 1);
+		int numGiros = (int) (Math.random() * MAX_GIROS) + 1;
 		
 		for (int i = 0; i < numGiros; i++) {
-			int num = (int) (Math.random() * (MAX_NUM - 1) + 1);
+			int num = (int) (Math.random() * MAX_NUM) + 1;
 			numero.setText(String.valueOf(num));
 			try {
 				sleep(10);

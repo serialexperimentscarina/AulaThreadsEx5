@@ -48,7 +48,7 @@ public class ThreadJogada extends Thread{
 	}
 	
 	private void encerraJogo() {
-		if (nums[1].getText().equals(nums[2].getText()) && nums[2].getText().equals(nums[3].getText())) {
+		if (nums[0].getText().equals(nums[1].getText()) && nums[1].getText().equals(nums[2].getText())) {
 			lblTitulo.setText("GANHOU!");
 			lblTitulo.setForeground(new Color(124, 252, 0));
 		} else {
