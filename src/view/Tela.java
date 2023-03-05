@@ -5,6 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
+import javax.swing.JButton;
 
 public class Tela extends JFrame {
 
@@ -13,6 +18,9 @@ public class Tela extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField num1;
+	private JTextField num2;
+	private JTextField num3;
 
 	/**
 	 * Launch the application.
@@ -37,12 +45,46 @@ public class Tela extends JFrame {
 	public Tela() {
 		setTitle("Caça-Níquel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 850, 550);
+		setBounds(100, 100, 800, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		num1 = new JTextField();
+		num1.setEditable(false);
+		num1.setHorizontalAlignment(SwingConstants.CENTER);
+		num1.setFont(new Font("Tahoma", Font.PLAIN, 48));
+		num1.setBounds(180, 150, 90, 75);
+		contentPane.add(num1);
+		num1.setColumns(10);
+		
+		num2 = new JTextField();
+		num2.setHorizontalAlignment(SwingConstants.CENTER);
+		num2.setFont(new Font("Tahoma", Font.PLAIN, 48));
+		num2.setEditable(false);
+		num2.setColumns(10);
+		num2.setBounds(350, 150, 90, 75);
+		contentPane.add(num2);
+		
+		num3 = new JTextField();
+		num3.setHorizontalAlignment(SwingConstants.CENTER);
+		num3.setFont(new Font("Tahoma", Font.PLAIN, 48));
+		num3.setEditable(false);
+		num3.setColumns(10);
+		num3.setBounds(520, 150, 90, 75);
+		contentPane.add(num3);
+		
+		JLabel lblNewLabel = new JLabel("Caça-Níquel");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblNewLabel.setBounds(300, 50, 175, 40);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Jogar");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton.setBounds(350, 310, 90, 25);
+		contentPane.add(btnNewButton);
 	}
-
 }
